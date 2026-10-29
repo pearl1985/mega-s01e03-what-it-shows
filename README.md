@@ -29,7 +29,7 @@ The page now has `status: living` and shows each ticket's state in its table.
   (`support-kb/src/lib/data/tickets-4471.json`).
 - Rendered: `rendered/kb/incidents/4471-what-it-shows/index.html` (text version: `rendered/4471-what-it-shows.txt`).
   `rendered/` is the full static build of the kb, built 2026-10-29.
-- Signature: `Slawek Michrowski` · desk ref `DR-2ZEV-HMQY`.
+- Signature: the course ticket from start-challenge (as the Challenge requires), written as `signature:` in the page frontmatter · owner Slawek Michrowski (harness) · desk ref `DR-J01Z-T5W3`.
 
 ## Rebuild
 
