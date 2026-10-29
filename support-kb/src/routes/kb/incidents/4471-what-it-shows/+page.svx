@@ -4,7 +4,7 @@ title: '#4471 · what it shows: three problems, not one'
 owner: Slawek Michrowski (harness)
 status: living
 reviewed: 2026-10-29
-signature: Slawek Michrowski
+signature: v1.eyJzdWIiOiIxMDIzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyODQxOTQsImV4cCI6MTc5MzM3MDU5NH0.azjga4liz5zhspkL20ArrwUXZJR1J1BNzpL-F4DwTiA
 ---
 
 <script>
