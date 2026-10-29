@@ -1,0 +1,14 @@
+{
+  "parser": {
+    "issue": "https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/1",
+    "title": "Shared parser reads day-first dates month-first (374 reports)"
+  },
+  "hint": {
+    "issue": "https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/2",
+    "title": "booking-v3 form hints MM/DD/YYYY to day-first tenants; dates flip (33 reports)"
+  },
+  "oneDayMove": {
+    "issue": "https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/3",
+    "title": "Booking dates shift by one day, not a month flip (5 reports, likely timezone)"
+  }
+}

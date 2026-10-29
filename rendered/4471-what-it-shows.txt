@@ -1,0 +1,84 @@
+#4471 · what it shows: three problems, not one · support kb
+
+support desk · kb </kb>
+#4471 · what it shows: three problems, not one
+
+owner Slawek Michrowski (harness) proposed reviewed 2026-10-29 · 0 days ago
+
+The #4471 page </kb/incidents/4471> calls it one issue: the parser reads dates month first,
+our tenants write the day first, one fix queued. Read by cause instead of by subject, the
+reports say something else.
+Not one issue: one ticket per problem. The queued parser fix closes only `parser`.
+What the reports show
+
+412 reports merged into #4471 · 3 problems ·
+427 rows, 15 duplicates removed
+
+| problem | reports | tagged as | tenants | seen | ticket
+
+| parser
+
+the shared parser reads the month first | 374 | parser ×351 · hint ×23 | 11 | 2026-04-01 → 2026-10-04 | pearl1985/mega-s01e03-what-it-shows/issues/1 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/1>
+
+| hint
+
+booking-v3 hints MM/DD/YYYY, reads the day first | 33 | hint ×18 · parser ×15 | 3 | 2026-04-17 → 2026-09-22 | pearl1985/mega-s01e03-what-it-shows/issues/2 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/2>
+
+| oneDayMove
+
+the date moves by one day | 5 | parser ×5 | 5 | 2026-04-02 → 2026-10-04 | pearl1985/mega-s01e03-what-it-shows/issues/3 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/3>
+
+12 distinct subjects across the 412 reports · intake's tag disagrees with the
+tenant's cause 38 times.
+
+- parser: the shared parser reads every date month first, so a day-first tenant’s dates
+come out with day and month swapped. This is the bug the ticket was opened for.
+
+- hint: booking-v3 prints MM/DD/YYYY under its date field. People type what it tells
+them, and the form reads the date the tenant’s way, day first. A different bug in a different
+place; the desk’s own table already marks it “not this ticket”.
+
+- oneDayMove: the date moves by one day, not by months: a Tuesday shows as Monday, one
+month is a day off, a client in Lisbon and one in Toronto see different days. That is a
+timezone or date-boundary bug. The desk noticed these and footnoted them under parser.
+
+Why the ticket hid them
+
+- Merged by subject. Decision 0001 </kb/decisions/0001-dedupe-by-subject> merges reports
+whose subject lines match and nobody reads the body. “Wrong day on the invite” fits all
+three problems, so all three landed in one ticket.
+
+- Tagged by browser. Intake’s tag is a guess from the reporter’s browser language; the
+cause depends on the tenant and the form they run. Counting tags shows how often the two
+disagree, not what broke.
+
+- Footnoted, not split. The one-day moves were seen, then counted under the tenant’s cause.
+A footnote does not reach engineering.
+
+- Counted twice. The export comes in overlapping pages; the table counts each id once.
+
+What each ticket is for
+
+- parser: fix how the shared parser reads dates for day-first tenants. When it ships, parser reports should stop; hint and oneDayMove will not.
+
+- hint: make booking-v3’s hint and its reading agree with the tenant’s locale.
+
+- oneDayMove: find where a date crosses a day boundary (time zone, UTC midnight,
+daylight saving) and keep the booked day.
+
+Each problem links to its ticket in the table. Decision 0001 stands as written; replacing it is
+a decision record of its own.
+
+Lessons
+
+- A big ticket can be several bugs that share a subject line. Count by cause, not by subject.
+
+- Read a sample of bodies before calling a ticket one issue.
+
+- A footnote is a finding nobody acts on. If it is a different problem, give it a ticket.
+
+- An intake tag is a guess. The tenant decides the cause.
+
+desk ref DR-2ZEV-HMQY
+
+Pages are written by people. Tables and charts are built from data at render time.
