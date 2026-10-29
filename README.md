@@ -12,6 +12,16 @@ Course work for MEGA.dev, Challenge S01E03. A support desk merged 412 reports ab
 
 412 unique reports (427 rows, 15 duplicates removed).
 
+## Outcome
+
+#4471 was closed on 05 Oct 2026.
+
+- Issue #1 (`parser`): closed as completed. The parser was fixed (`fix(dates): parse dd/mm for eu locales`).
+- Issue #2 (`hint`): closed as not planned. The booking-v3 form was retired.
+- Issue #3 (`oneDayMove`): closed as not planned. The #4471 close did not address it; reopen if it recurs.
+
+The page now has `status: living` and shows each ticket's state in its table.
+
 ## Page
 
 - Source: `support-kb/src/routes/kb/incidents/4471-what-it-shows/+page.svx`, with the logic it uses

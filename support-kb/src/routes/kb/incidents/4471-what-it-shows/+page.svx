@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · what it shows: three problems, not one'
 owner: Slawek Michrowski (harness)
-status: proposed
+status: living
 reviewed: 2026-10-29
 signature: Slawek Michrowski
 ---
@@ -18,7 +18,7 @@ our tenants write the day first, one fix queued. Read by cause instead of by sub
 reports say something else.
 
 <Callout kind="warn">
-Not one issue: one ticket per problem. The queued parser fix closes only `parser`.
+Not one issue: one ticket per problem. #4471 is closed; one of its problems is unfixed.
 </Callout>
 
 ## What the reports show
@@ -34,6 +34,13 @@ Not one issue: one ticket per problem. The queued parser fix closes only `parser
   month is a day off, a client in Lisbon and one in Toronto see different days. That is a
   timezone or date-boundary bug. The desk noticed these and footnoted them under `parser`.
 
+## What engineering did
+
+Engineering closed #4471 on 05 Oct. The parser fix shipped, so `parser` is fixed; the
+`hint` ticket was closed as won't fix, because the booking-v3 form was retired. The one-day
+move was not part of that close, so its ticket was closed as not planned, with no fix. The problem
+stays in the kb as open work: the reports stand. The table shows each ticket's state.
+
 ## Why the ticket hid them
 
 - **Merged by subject.** [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports
@@ -48,11 +55,13 @@ Not one issue: one ticket per problem. The queued parser fix closes only `parser
 
 ## What each ticket is for
 
-- **`parser`**: fix how the shared parser reads dates for day-first tenants. When it ships,
-  `parser` reports should stop; `hint` and `oneDayMove` will not.
-- **`hint`**: make booking-v3's hint and its reading agree with the tenant's locale.
-- **`oneDayMove`**: find where a date crosses a day boundary (time zone, UTC midnight,
-  daylight saving) and keep the booked day.
+- **`parser`**: fixed how the shared parser reads dates for day-first tenants
+  (`fix(dates): parse dd/mm for eu locales`). `parser` reports should stop; `oneDayMove`
+  reports will not.
+- **`hint`**: the booking-v3 form was retired, and its hint went with it. Closed as won't fix.
+- **`oneDayMove`**: closed as not planned, not fixed. The open work, to pick up when it
+  recurs: find where a date crosses a day boundary (time zone, UTC
+  midnight, daylight saving) and keep the booked day.
 
 Each problem links to its ticket in the table. Decision 0001 stands as written; replacing it is
 a decision record of its own.
@@ -63,5 +72,6 @@ a decision record of its own.
 - Read a sample of bodies before calling a ticket one issue.
 - A footnote is a finding nobody acts on. If it is a different problem, give it a ticket.
 - An intake tag is a guess. The tenant decides the cause.
+- Closing the big ticket does not close the problems it hid. Check each one before you close yours.
 
 <RenderStamp {signature} />

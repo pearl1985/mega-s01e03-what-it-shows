@@ -3,30 +3,31 @@
 support desk · kb </kb>
 #4471 · what it shows: three problems, not one
 
-owner Slawek Michrowski (harness) proposed reviewed 2026-10-29 · 0 days ago
+owner Slawek Michrowski (harness) living reviewed 2026-10-29 · 0 days ago
 
 The #4471 page </kb/incidents/4471> calls it one issue: the parser reads dates month first,
 our tenants write the day first, one fix queued. Read by cause instead of by subject, the
 reports say something else.
-Not one issue: one ticket per problem. The queued parser fix closes only `parser`.
+Not one issue: one ticket per problem. #4471 is closed; one of its problems is unfixed.
 What the reports show
 
 412 reports merged into #4471 · 3 problems ·
-427 rows, 15 duplicates removed
+427 rows, 15 duplicates removed ·
+3 closed, 0 open
 
-| problem | reports | tagged as | tenants | seen | ticket
+| problem | reports | tagged as | tenants | seen | ticket | state
 
 | parser
 
-the shared parser reads the month first | 374 | parser ×351 · hint ×23 | 11 | 2026-04-01 → 2026-10-04 | pearl1985/mega-s01e03-what-it-shows/issues/1 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/1>
+the shared parser reads the month first | 374 | parser ×351 · hint ×23 | 11 | 2026-04-01 → 2026-10-04 | pearl1985/mega-s01e03-what-it-shows/issues/1 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/1> | closed · fixed · fix(dates): parse dd/mm for eu locales
 
 | hint
 
-booking-v3 hints MM/DD/YYYY, reads the day first | 33 | hint ×18 · parser ×15 | 3 | 2026-04-17 → 2026-09-22 | pearl1985/mega-s01e03-what-it-shows/issues/2 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/2>
+booking-v3 hints MM/DD/YYYY, reads the day first | 33 | hint ×18 · parser ×15 | 3 | 2026-04-17 → 2026-09-22 | pearl1985/mega-s01e03-what-it-shows/issues/2 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/2> | closed · won't fix · booking-v3 form retired
 
 | oneDayMove
 
-the date moves by one day | 5 | parser ×5 | 5 | 2026-04-02 → 2026-10-04 | pearl1985/mega-s01e03-what-it-shows/issues/3 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/3>
+the date moves by one day | 5 | parser ×5 | 5 | 2026-04-02 → 2026-10-04 | pearl1985/mega-s01e03-what-it-shows/issues/3 <https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/3> | closed · not planned · closed with #4471, not addressed · reopen if it recurs
 
 12 distinct subjects across the 412 reports · intake's tag disagrees with the
 tenant's cause 38 times.
@@ -41,6 +42,12 @@ place; the desk’s own table already marks it “not this ticket”.
 - oneDayMove: the date moves by one day, not by months: a Tuesday shows as Monday, one
 month is a day off, a client in Lisbon and one in Toronto see different days. That is a
 timezone or date-boundary bug. The desk noticed these and footnoted them under parser.
+
+What engineering did
+
+Engineering closed #4471 on 05 Oct. The parser fix shipped, so parser is fixed; the hint ticket was closed as won’t fix, because the booking-v3 form was retired. The one-day
+move was not part of that close, so its ticket was closed as not planned, with no fix. The problem
+stays in the kb as open work: the reports stand. The table shows each ticket’s state.
 
 Why the ticket hid them
 
@@ -59,12 +66,14 @@ A footnote does not reach engineering.
 
 What each ticket is for
 
-- parser: fix how the shared parser reads dates for day-first tenants. When it ships, parser reports should stop; hint and oneDayMove will not.
+- parser: fixed how the shared parser reads dates for day-first tenants
+(fix(dates): parse dd/mm for eu locales). parser reports should stop; oneDayMove reports will not.
 
-- hint: make booking-v3’s hint and its reading agree with the tenant’s locale.
+- hint: the booking-v3 form was retired, and its hint went with it. Closed as won’t fix.
 
-- oneDayMove: find where a date crosses a day boundary (time zone, UTC midnight,
-daylight saving) and keep the booked day.
+- oneDayMove: closed as not planned, not fixed. The open work, to pick up when it
+recurs: find where a date crosses a day boundary (time zone, UTC
+midnight, daylight saving) and keep the booked day.
 
 Each problem links to its ticket in the table. Decision 0001 stands as written; replacing it is
 a decision record of its own.
@@ -78,6 +87,8 @@ Lessons
 - A footnote is a finding nobody acts on. If it is a different problem, give it a ticket.
 
 - An intake tag is a guess. The tenant decides the cause.
+
+- Closing the big ticket does not close the problems it hid. Check each one before you close yours.
 
 desk ref DR-2ZEV-HMQY
 

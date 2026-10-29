@@ -1,14 +1,20 @@
 {
   "parser": {
     "issue": "https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/1",
-    "title": "Shared parser reads day-first dates month-first (374 reports)"
+    "title": "Shared parser reads day-first dates month-first (374 reports)",
+    "state": "closed",
+    "outcome": "fixed · fix(dates): parse dd/mm for eu locales"
   },
   "hint": {
     "issue": "https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/2",
-    "title": "booking-v3 form hints MM/DD/YYYY to day-first tenants; dates flip (33 reports)"
+    "title": "booking-v3 form hints MM/DD/YYYY to day-first tenants; dates flip (33 reports)",
+    "state": "closed",
+    "outcome": "won't fix · booking-v3 form retired"
   },
   "oneDayMove": {
     "issue": "https://github.com/pearl1985/mega-s01e03-what-it-shows/issues/3",
-    "title": "Booking dates shift by one day, not a month flip (5 reports, likely timezone)"
+    "title": "Booking dates shift by one day, not a month flip (5 reports, likely timezone)",
+    "state": "closed",
+    "outcome": "not planned · closed with #4471, not addressed · reopen if it recurs"
   }
 }
